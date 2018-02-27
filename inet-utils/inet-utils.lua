@@ -1,6 +1,8 @@
 local inet = require("internet")
 
-global function get(url)
+local inet-utils = {}
+
+global function inet-utils.get(url)
   local req = inet.request(url)
   local body = ""
   if (req) then
@@ -11,7 +13,7 @@ global function get(url)
   return body
 end
 
-global function post(url, data)
+global function inet-utils.post(url, data)
   local req = inet.request(url, data)
   local body = ""
   if (req) then
@@ -21,3 +23,5 @@ global function post(url, data)
   end
   return body
 end
+
+return inet-utils
