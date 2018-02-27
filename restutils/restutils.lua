@@ -1,17 +1,17 @@
 local inet = require("internet")
 local json = require("json")
 
-local inetutils = {}
+local restutils = {}
 
-function inetutils.encodeJson(data)
+function restutils.encodeJson(data)
   return json.encode(data)
 end
 
-function inetutils.decodeJson(data)
+function restutils.decodeJson(data)
   return json.decode(data)
 end
 
-function inetutils.get(url)
+function restutils.get(url)
   local req = inet.request(url)
   local body = ""
   if req then
@@ -22,7 +22,7 @@ function inetutils.get(url)
   return body
 end
 
-function inetutils.getJson(url)
+function restutils.getJson(url)
   local req = inet.request(url)
   local body = ""
   if req then
@@ -30,10 +30,10 @@ function inetutils.getJson(url)
       body = body .. line
     end
   end
-  return jsonDecode(body)
+  return decodeJson(body)
 end
 
-function inetutils.post(url, data)
+function restutils.post(url, data)
   local req = inet.request(url, data)
   local body = ""
   if req then
@@ -44,7 +44,7 @@ function inetutils.post(url, data)
   return body
 end
 
-function inetutils.postJson(url, data)
+function restutils.postJson(url, data)
   local req = inet.request(url, data)
   local body = ""
   if req then
@@ -52,7 +52,7 @@ function inetutils.postJson(url, data)
       body = body .. line
     end
   end
-  return jsonDecode(body)
+  return decodeJson(body)
 end
 
-return inetutils
+return restutils
