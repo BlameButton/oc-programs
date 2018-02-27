@@ -1,4 +1,5 @@
 local inet = require("internet")
+local json = require("json")
 
 local inetutils = {}
 
@@ -22,6 +23,14 @@ function inetutils.post(url, data)
     end
   end
   return body
+end
+
+function inetutils.encode(data)
+  return json.encode(data)
+end
+
+function inetutils.decode(data)
+  return json.decode(data)
 end
 
 return inetutils
