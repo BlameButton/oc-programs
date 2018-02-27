@@ -30,7 +30,7 @@ function restutils.getJson(url)
       body = body .. line
     end
   end
-  return restutils.decodeJson(body)
+  return json.decode(body)
 end
 
 function restutils.post(url, data)
@@ -52,7 +52,7 @@ function restutils.postJson(url, data)
       body = body .. line
     end
   end
-  return restutilsdecodeJson(body)
+  return json.decode(body)
 end
 
 return restutils
