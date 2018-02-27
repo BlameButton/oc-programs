@@ -3,6 +3,14 @@ local json = require("json")
 
 local inetutils = {}
 
+function inetutils.encodeJson(data)
+  return json.encode(data)
+end
+
+function inetutils.decodeJson(data)
+  return json.decode(data)
+end
+
 function inetutils.get(url)
   local req = inet.request(url)
   local body = ""
@@ -22,7 +30,7 @@ function inetutils.getJson(url)
       body = body .. line
     end
   end
-  return inetutils.jsonDecode(body)
+  return jsonDecode(body)
 end
 
 function inetutils.post(url, data)
@@ -44,15 +52,7 @@ function inetutils.postJson(url, data)
       body = body .. line
     end
   end
-  return inetutils.jsonDecode(body)
-end
-
-function inetutils.encodeJson(data)
-  return json.encode(data)
-end
-
-function inetutils.decodeJson(data)
-  return jsonjsonjson.decode(data)
+  return jsonDecode(body)
 end
 
 return inetutils
