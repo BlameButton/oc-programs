@@ -3,12 +3,12 @@ local json = require("json")
 
 local restutils = {}
 
-function restutils.encodeJson(data)
-  return json.encode(data)
+function restutils.stringify(data)
+  return json.stringify(data)
 end
 
-function restutils.decodeJson(data)
-  return json.decode(data)
+function restutils.parse(data)
+  return json.parse(data)
 end
 
 function restutils.get(url)
@@ -30,7 +30,7 @@ function restutils.getJson(url)
       body = body .. line
     end
   end
-  return json.decode(body)
+  return json.parse(body)
 end
 
 function restutils.post(url, data)
@@ -52,7 +52,7 @@ function restutils.postJson(url, data)
       body = body .. line
     end
   end
-  return json.decode(body)
+  return json.parse(body)
 end
 
 return restutils
